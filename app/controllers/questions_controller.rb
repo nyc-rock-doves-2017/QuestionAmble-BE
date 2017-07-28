@@ -11,11 +11,11 @@ class QuestionsController < ApplicationController
   def update(question_params)
   end
 
-  def delete
+  def destroy
   end
 
   private
   def question_params
   end
-  
+
 end
