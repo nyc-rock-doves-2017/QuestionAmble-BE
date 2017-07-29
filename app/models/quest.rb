@@ -1,9 +1,10 @@
 class Quest < ApplicationRecord
   validates :creator_id, :title, :key, presence: true
   validates :key, uniqueness: true
+  before_save :generate_key
 
   def generate_key
-    Array.new(n){[*"A".."Z", *"0".."9"].sample}.join
+    self.key = Array.new(n){[*"A".."Z", *"0".."9"].sample}.join
   end
 
   belongs_to :creator, foreign_key: 'creator_id', class_name: 'User'
