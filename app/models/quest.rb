@@ -5,4 +5,9 @@ class Quest < ApplicationRecord
   def generate_key
     Array.new(n){[*"A".."Z", *"0".."9"].sample}.join
   end
+
+  belongs_to :creator, foreign_key: 'creator_id', class_name: 'User'
+  has_many :questions
+  has_many :played_quests, class_name: 'Round'
+  has_many :played_quest_results, class_name: 'Result', through: :played_quests
 end

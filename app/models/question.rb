@@ -14,4 +14,7 @@ class Question < ApplicationRecord
    {:bucket => ENV['S3_BUCKET_NAME'], :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'], :s3_region => ENV['AWS_REGION']}
   end
+
+  belongs_to :quest
+  has_many :guesses, class_name: 'Result'
 end
