@@ -16,36 +16,13 @@ class RoundsController < ApplicationController
 
   def next_question
     @round = Round.find_by(id: params[:id])
-    p "**********"
-    p "@round"
-    p @round
-
     round_questions = @round.quest.questions
-    p "**********"
-    p "round_questions"
-    p round_questions
-
     current_question = Question.find_by(id: @round.guesses.last.question_id)
-    p "**********"
-    p "current_question"
-    p current_question
-
     current_position = round_questions.index(current_question)
-    p "**********"
-    p "current_position"
-    p current_position
-
     next_question_position = current_position + 1
-    p "**********"
-    p "next_question_position"
-    p next_question_position
-
     @next_question = round_questions[next_question_position]
-    p "**********"
-    p "@next_question"
-    p @next_question
 
-    if @next_question == nil
+    if @next_question  == nil
       render json: {message: "game complete"}
     else
       render json: @next_question
