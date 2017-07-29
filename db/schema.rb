@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20170728220723) do
   create_table "results", force: :cascade do |t|
     t.integer "round_id", null: false
     t.integer "question_id", null: false
-    t.boolean "win", null: false
+    t.boolean "win"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
