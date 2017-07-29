@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
   get '/users/:id/my_quests' => 'users#my_quests'
+  get '/users/:id/my_stats' => 'users#my_stats'
 end

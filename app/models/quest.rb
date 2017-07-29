@@ -48,6 +48,10 @@ class Quest < ApplicationRecord
     all_players = all_attempts.uniq
   end
 
+  def game_key
+    self.key
+  end
+
   private
   def generate_key
     self.key = Array.new(8){[*"A".."Z", *"0".."9"].sample}.join

@@ -25,6 +25,11 @@ class UsersController < ApplicationController
     render json: @user_quests
   end
 
+  def my_stats
+    @user = User.find_by(id: params[:id])
+    render json: @user
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)
