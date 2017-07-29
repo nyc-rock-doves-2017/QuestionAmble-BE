@@ -21,9 +21,9 @@ class Quest < ApplicationRecord
   end
 
   def completion_score
-    denomenator = self.times_played
-    numerator = self.times_completed
-    score = ((numerator / denomenator) * 100).floor
+    denominator = (self.times_played).to_f
+    numerator = (self.times_completed).to_f
+    score = ((numerator / denominator) * 100).floor
     result = "#{score}%"
   end
 
@@ -35,11 +35,10 @@ class Quest < ApplicationRecord
   end
 
   def avg_accuracy_score
-    # denomenator = self.times_completed
-    # numerator = self.all_results.reduce(0, :+)
-    # score = numerator/denomenator
-    # result = "#{score}%"
-    "To be implemented"
+    denominator = (self.times_completed).to_f
+    numerator = (self.all_results.reduce(0, :+)).to_f
+    score = (numerator/denominator).floor
+    result = "#{score}%"
   end
 
   def played_by
