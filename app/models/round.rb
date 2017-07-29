@@ -28,4 +28,16 @@ class Round < ApplicationRecord
   def accuracy_score
     result = "#{self.accuracy_score_raw}%"
   end
+
+  def created_by
+    self.quest.creator.username
+  end
+
+  def quest_title
+    self.quest.title
+  end
+
+  def date_of_play
+    self.created_at.strftime('%B %d, %Y')
+  end
 end

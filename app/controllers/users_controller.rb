@@ -9,8 +9,8 @@ class UsersController < ApplicationController
       render json: @user
     else
       render json: {
-        error: "The email you have entered does not match an existing account."
-      }, status: 400
+        error: "Invalid input - please try again."
+      }, status: 422
     end
   end
 
@@ -23,6 +23,11 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user_quests = @user.quests_created
     render json: @user_quests
+  end
+
+  def my_stats
+    @user = User.find_by(id: params[:id])
+    render json: @user
   end
 
   private
