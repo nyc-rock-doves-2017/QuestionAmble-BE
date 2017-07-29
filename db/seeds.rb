@@ -19,11 +19,11 @@ Quest.all.ids.each do |id|
 end
 
 Round.create(quest_id: 2, player_id: 1)
-  Result.create (round_id: 1, question_id: 4, win: true)
-  Result.create (round_id: 1, question_id: 5, win: false)
-  Result.create (round_id: 1, question_id: 5, win: false)
-  Result.create (round_id: 1, question_id: 5, win: true)
-  Result.create (round_id: 1, question_id: 6, win: true)
+  Result.create(round_id: 1, question_id: 4, win: true)
+  Result.create(round_id: 1, question_id: 5, win: false)
+  Result.create(round_id: 1, question_id: 5, win: false)
+  Result.create(round_id: 1, question_id: 5, win: true)
+  Result.create(round_id: 1, question_id: 6, win: true)
 
 Round.create(quest_id: 3, player_id: 2)
   Result.create(round_id: 2, question_id: 7, win: false)
@@ -64,9 +64,9 @@ Round.create(quest_id: 1, player_id: 4)
   Result.create(round_id: 7, question_id: 3, win: true)
 
 Round.create(quest_id: 2, player_id: 3)
-  Result.create (round_id: 8, question_id: 4, win: true)
-  Result.create (round_id: 8, question_id: 5, win: true)
-  Result.create (round_id: 8, question_id: 6, win: true)
+  Result.create(round_id: 8, question_id: 4, win: true)
+  Result.create(round_id: 8, question_id: 5, win: true)
+  Result.create(round_id: 8, question_id: 6, win: true)
 
 Round.create(quest_id: 3, player_id: 5)
   Result.create(round_id: 9, question_id: 7, win: false)
