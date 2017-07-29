@@ -80,3 +80,8 @@ Round.create(quest_id: 4, player_id: 1)
   Result.create(round_id: 10, question_id: 10, win: true)
   Result.create(round_id: 10, question_id: 11, win: true)
   Result.create(round_id: 10, question_id: 12, win: true)
+
+#Round that has not been completed for testing #next_question
+Round.create(quest_id: 4, player_id: 1)
+  Result.create(round_id: 11, question_id: 10, win: true)
+  Result.create(round_id: 11, question_id: 11, win: true)

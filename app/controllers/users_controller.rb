@@ -9,8 +9,8 @@ class UsersController < ApplicationController
       render json: @user
     else
       render json: {
-        error: "The email you have entered does not match an existing account."
-      }, status: 400
+        error: "Invalid input - please try again."
+      }, status: 422
     end
   end
 
