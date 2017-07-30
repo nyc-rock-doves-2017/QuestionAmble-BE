@@ -3,7 +3,7 @@ class QuestsController < ApplicationController
     @quest = Quest.new
   end
 
-  def create(quest_params)
+  def create
     @quest = Quest.new(quest_params)
     if @quest.save
       render json: @quest
@@ -16,6 +16,6 @@ class QuestsController < ApplicationController
 
   private
   def quest_params
-    params.require(:quest).permit(:creator_id, :title, :key, :descirption)
+    params.require(:quest).permit(:creator_id, :title, :key, :description)
   end
 end
