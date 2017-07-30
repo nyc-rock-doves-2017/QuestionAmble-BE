@@ -1,8 +1,8 @@
 class ResultsController < ApplicationController
 
   def create
-    user_guess = params[:user_guess]
-    answer = Question.find_by(id: params[:question_id]).answer
+    user_guess = (params[:user_guess]).gsub(/[^0-9a-z]/i, '').downcase
+    answer = (Question.find_by(id: params[:question_id]).answer).gsub(/[^0-9a-z]/i, '').downcase
     @result = Result.new(result_params)
 
     if answer == user_guess
