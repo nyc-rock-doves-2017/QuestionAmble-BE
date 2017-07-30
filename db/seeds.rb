@@ -14,7 +14,7 @@ end
 
 Quest.all.ids.each do |id|
   3.times do
-    Question.create(quest_id: id, question_text: ("q_text: " + Faker::Hipster.sentence(3)), answer: ("answer: " + Faker::Food.ingredient), hint: ("hint: " + Faker::Food.measurement), clue_type: "text", clue_text: ("clue: " + Faker::Food.spice))
+    Question.create(quest_id: id, question_text: ("q_text: " + Faker::Hipster.sentence(3)), answer: ("answer: " + Faker::Food.ingredient), hint: ("hint: " + Faker::Food.measurement), clue_type: "text", clue_text: ("clue: " + Faker::Food.spice), lat: 40.706567, lng: -74.009042)
   end
 end
 

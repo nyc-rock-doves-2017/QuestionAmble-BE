@@ -38,6 +38,6 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:quest).permit(:quest_id, :question_text, :answer, :hint, :clue_type, :clue_text, :clue_image)
+    params.require(:quest).permit(:quest_id, :question_text, :answer, :hint, :clue_type, :clue_text, :clue_image, :lat, :lng)
   end
 end

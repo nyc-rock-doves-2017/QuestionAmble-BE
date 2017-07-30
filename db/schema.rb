@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728220723) do
+ActiveRecord::Schema.define(version: 20170729235742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20170728220723) do
     t.string "clue_image_content_type"
     t.integer "clue_image_file_size"
     t.datetime "clue_image_updated_at"
+    t.decimal "lat", precision: 10, scale: 6, null: false
+    t.decimal "lng", precision: 10, scale: 6, null: false
   end
 
   create_table "quests", force: :cascade do |t|
