@@ -22,9 +22,14 @@ class Quest < ApplicationRecord
 
   def completion_score
     denominator = (self.times_played).to_f
-    numerator = (self.times_completed).to_f
-    score = ((numerator / denominator) * 100).floor
-    result = "#{score}%"
+
+    if denominator == 0.0
+      result = "---"
+    else
+      numerator = (self.times_completed).to_f
+      score = ((numerator / denominator) * 100).floor
+      result = "#{score}%"
+    end
   end
 
   def all_results
@@ -36,16 +41,24 @@ class Quest < ApplicationRecord
 
   def avg_accuracy_score
     denominator = (self.times_completed).to_f
-    numerator = (self.all_results.reduce(0, :+)).to_f
-    score = (numerator/denominator).floor
-    result = "#{score}%"
+    if denominator == 0.0
+      result = "---"
+    else
+      numerator = (self.all_results.reduce(0, :+)).to_f
+      score = (numerator/denominator).floor
+      result = "#{score}%"
+    end
   end
 
   def played_by
-    all_attempts = self.played_quests.map do |quest|
-      quest.played_by
+    if self.played_quests.length == 0
+      result = "No one has played this quest yet"
+    else
+      all_attempts = self.played_quests.map do |quest|
+        quest.played_by
+      end
+      all_players = all_attempts.uniq
     end
-    all_players = all_attempts.uniq
   end
 
   def game_key
