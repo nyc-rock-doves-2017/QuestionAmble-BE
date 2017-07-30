@@ -29,6 +29,10 @@ class RoundsController < ApplicationController
     end
   end
 
+  def compare_location
+
+  end
+
   def show
     @round = Round.find_by(id: params[:id])
     render json: @round
