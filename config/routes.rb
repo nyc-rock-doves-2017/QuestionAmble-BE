@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   get '/rounds/:id/next_question' => 'rounds#next_question'
   get '/rounds/:id/compare_location' => 'rounds#next_question'
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show] do
+    collection do
+      post 'confirm'
+      post 'login'
+    end
+  end
   get '/users/:id/my_quests' => 'users#my_quests'
   get '/users/:id/my_stats' => 'users#my_stats'
 end
