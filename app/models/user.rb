@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  before_save :downcase_email
+
   validates :username, :email, :password_digest, presence: true
   validates :username, :email, uniqueness: true
 
@@ -36,6 +38,10 @@ class User < ApplicationRecord
     all_results = completed_quests.map do |quest|
       quest.accuracy_score_raw
     end
+  end
+
+  def downcase_email
+    self.email = self.email.delete(' ').downcase
   end
 
 end
