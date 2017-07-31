@@ -12,11 +12,11 @@ class ResultsController < ApplicationController
     end
 
     if @result.save && @result.win == true
-      render json: {"result" = "correct"}
+      render json: {result: "correct"}
     elsif @result.save && @result.win == false
-      render json: {"result" = "incorrect"}
+      render json: {result: "incorrect"}
     else
-      render json:
+      render json: {
         error: "Invalid input - please try again."
       }, status: 422
     end
