@@ -12,9 +12,14 @@ class User < ApplicationRecord
 
   def ind_average_score
     denominator = self.num_games_completed.to_f
-    numerator = (self.all_scores.reduce(0, :+)).to_f
-    score = (numerator/denominator).floor
-    result = "#{score}%"
+
+    if denominator == 0.0
+      result = "---"
+    else
+      numerator = (self.all_scores.reduce(0, :+)).to_f
+      score = (numerator/denominator).floor
+      result = "#{score}%"
+    end
   end
 
   def num_games_started
@@ -28,9 +33,14 @@ class User < ApplicationRecord
 
   def completeness_percentage
     denominator = (self.num_games_started).to_f
-    numerator = (self.num_games_completed).to_f
-    score = ((numerator / denominator) * 100).floor
-    result = "#{score}%"
+
+    if denominator == 0.0
+      result = "---"
+    else
+      numerator = (self.num_games_completed).to_f
+      score = ((numerator / denominator) * 100).floor
+      result = "#{score}%"
+    end
   end
 
   def all_scores

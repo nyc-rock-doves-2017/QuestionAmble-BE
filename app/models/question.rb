@@ -12,7 +12,7 @@ class Question < ApplicationRecord
   # validates :clue_image, :presence => true
   # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  validates :quest_id, :question_text, :answer, :hint, :clue_type, :clue_text, :lat, :lng,
+  validates :quest_id, :question_text, :answer, :hint, :clue_text, :lat, :lng,
     presence: true
 
   # def s3_credentials
