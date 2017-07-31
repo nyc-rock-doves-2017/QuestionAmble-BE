@@ -4,8 +4,10 @@ class RoundsController < ApplicationController
   end
 
   def create
-    @round = Round.new(round_params)
-    if @round.save
+    @quest = Quest.find_by(key: params[:round][:game_key])
+    @round = Round.new(quest_id: @quest.id, player_id: params[:round][:player_id])
+
+    if (@round.save)
       render json: @round
     else
       render json: {
@@ -52,6 +54,6 @@ class RoundsController < ApplicationController
 
   private
   def round_params
-    params.require(:round).permit(:quest_id, :player_id)
+    params.require(:round).permit(:game_key, :player_id)
   end
 end
