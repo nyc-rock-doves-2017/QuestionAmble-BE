@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      user = User.find_by(username: params[:username])
+      user && user.authenticate(params[:password])
+      auth_token = JsonWebToken.encode({user_id: user.id})
+      render json: {auth_token: auth_token}, status: :ok
       render json: @user
     else
       render json: {
