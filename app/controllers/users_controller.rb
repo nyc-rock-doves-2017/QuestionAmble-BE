@@ -10,7 +10,6 @@ class UsersController < ApplicationController
       user && user.authenticate(params[:password])
       auth_token = JsonWebToken.encode({user_id: user.id})
       render json: {auth_token: auth_token}, status: :ok
-      render json: @user
     else
       render json: {
         error: "Invalid input - please try again."
