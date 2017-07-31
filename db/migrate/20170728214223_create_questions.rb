@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.text :question_text, null: false
       t.text :answer, null: false
       t.text :hint, null: false
-      t.string :clue_type, null: false
+      t.string :clue_type
       t.text :clue_text, null: false
 
       t.timestamps
