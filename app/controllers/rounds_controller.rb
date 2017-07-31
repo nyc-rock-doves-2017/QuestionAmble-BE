@@ -5,7 +5,7 @@ class RoundsController < ApplicationController
 
   def create
     @quest = Quest.find_by(key: params[:round][:game_key])
-    @round = Round.new(quest_id: @quest.id, player_id: params[:round][:player_id])
+    @round = Round.new(quest: @quest, player_id: params[:round][:player_id])
 
     if (@round.save)
       render json: @round
