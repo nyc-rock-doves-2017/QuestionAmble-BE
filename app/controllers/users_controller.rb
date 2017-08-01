@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate!, only: [:show, :my_quests, :my_stats]
+  # before_action :authenticate_request!, only: [:show, :my_quests, :my_stats]
 
   def new
     @user = User.new
