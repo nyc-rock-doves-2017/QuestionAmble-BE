@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate!, only: [:show, :my_quests, :my_stats]
+
   def new
     @user = User.new
   end
@@ -8,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       user = @user
       auth_token = JsonWebToken.encode({user_id: user.id})
-      render json: {auth_token: auth_token}, status: :ok
+      render json: {auth_token: auth_token, userID: @user.id}, status: :ok
     else
       render json: {
         error: "Invalid input - please try again."
@@ -21,7 +24,7 @@ class UsersController < ApplicationController
 
     if user && user.authenticate(params[:password])
       auth_token = JsonWebToken.encode({user_id: user.id})
-      render json: {auth_token: auth_token}, status: :ok
+      render json: {auth_token: auth_token, userID: user.id}, status: :ok
     else
       render json: {error: 'Invalid username / password'}, status: :unauthorized
     end

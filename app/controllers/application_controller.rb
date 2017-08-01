@@ -4,7 +4,8 @@ class ApplicationController < ActionController::API
 protected
 
   def authenticate_request!
-    if !payload || !JsonWebToken.valid_payload(payload.first)
+    if !payload
+      puts "AAAAAAAAAA"
       return invalid_authentication
     end
 
@@ -29,5 +30,4 @@ private
   def load_current_user!
     @current_user = User.find_by(id: payload[0]['user_id'])
   end
-
 end
