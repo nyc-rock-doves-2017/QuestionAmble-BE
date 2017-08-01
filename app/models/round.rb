@@ -40,4 +40,8 @@ class Round < ApplicationRecord
   def date_of_play
     self.created_at.strftime('%B %d, %Y')
   end
+
+  def first_question
+    self.quest.questions.first
+  end
 end

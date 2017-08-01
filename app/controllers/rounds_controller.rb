@@ -8,7 +8,7 @@ class RoundsController < ApplicationController
     @round = Round.new(quest: @quest, player_id: params[:round][:player_id])
 
     if (@round.save)
-      render json: @round
+      render json: {round_id: @round.id, first_question: @round.first_question}
     else
       render json: {
         error: "Invalid input - please try again."
