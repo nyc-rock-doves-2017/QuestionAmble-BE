@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :quests, only: [:new, :create]
   resources :rounds, only: [:new, :create, :show]
   get '/rounds/:id/next_question' => 'rounds#next_question'
-  get '/rounds/:id/compare_location' => 'rounds#next_question'
+  get '/rounds/:id/compare_location' => 'rounds#compare_location'
 
   resources :users, only: [:new, :create, :show] do
     collection do
