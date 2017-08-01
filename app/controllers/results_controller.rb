@@ -2,7 +2,11 @@ class ResultsController < ApplicationController
 
   def create
     user_guess = (params[:user_guess]).gsub(/[^0-9a-z]/i, '').downcase
-    answer = (Question.find_by(id: params[:question_id]).answer).gsub(/[^0-9a-z]/i, '').downcase
+    round_id = (params[:round_id]).to_i
+    question_id = (params[:question_id]).to_i
+
+    answer = (Question.find_by(id: question_id).answer).gsub(/[^0-9a-z]/i, '').downcase
+
     @result = Result.new(result_params)
 
     if answer == user_guess
@@ -24,6 +28,6 @@ class ResultsController < ApplicationController
 
   private
   def result_params
-    params.require(:result).permit(:quest_id, :player_id)
+    params.require(:result).permit(:round_id, :question_id)
   end
 end
