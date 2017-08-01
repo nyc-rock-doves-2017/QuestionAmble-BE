@@ -37,8 +37,12 @@ class RoundsController < ApplicationController
   end
 
   def compare_location
-    questions_match = Question.within(0.03, :origin[params[:player_lat], params[:player_lng]])
-    target = questions_match.select {|q| q.id == params[:cur_question_id]}
+    latitude = params["player_lat"].to_f
+    longitude = params["player_lng"].to_f
+    current_question = params["cur_question_id"].to_i
+
+    questions_match = Question.within(0.03, :origin => [latitude, longitude])
+    target = questions_match.select { |q| q.id == current_question }
 
     if target.length == 0
       render json: {clue: "not found"}
