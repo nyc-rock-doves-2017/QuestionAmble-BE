@@ -29,7 +29,7 @@ class RoundsController < ApplicationController
       @next_question = round_questions[next_question_position]
     end
 
-    if @next_question  == nil
+    if @next_question == nil
       render json: {message: "game complete"}
     else
       render json: @next_question
