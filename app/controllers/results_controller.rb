@@ -11,7 +11,7 @@ class ResultsController < ApplicationController
 
     if answer == user_guess
       @result.win = true
-      round = Round.find_by(round_id)
+      round = Round.find_by(id: round_id)
       round_questions = round.quest.questions
       current_position = round_questions.index(current_question)
       next_question_position = current_position + 1
