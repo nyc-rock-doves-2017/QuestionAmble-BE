@@ -1,35 +1,10 @@
 class ApplicationController < ActionController::API
   require 'json_web_token'
+  include Response
+  include ExceptionHandler
 
 protected
 
-#   def authenticate_request!
-#     if !payload
-#       puts "AAAAAAAAAA"
-#       return invalid_authentication
-#     end
-#       puts "BBBBBBBBBB"
-#     load_current_user!
-#     invalid_authentication unless @current_user
-#   end
-
-#   def invalid_authentication
-#     render json: {error: 'Invalid Request'}, status: :unauthorized
-#   end
-
-# private
-
-#   def payload
-#     auth_header = headers['Authorization']
-#     token = auth_header.split(' ').last
-#     JsonWebToken.decode(token)
-#   rescue
-#     nil
-#   end
-
-#   def load_current_user!
-#     @current_user = User.find_by(id: payload[0]['user_id'])
-#   end
   def authenticate!(object)
     invalid_request unless logged_in? && authorized?(object)
   end
@@ -65,4 +40,5 @@ protected
   def auth_present?
     !!auth
   end
+
 end

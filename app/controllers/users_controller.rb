@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    return if authenticate!(current_user)
     @user = User.find_by(id: params[:id])
     render json: @user
   end
