@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    return if authenticate!(current_user)
     @question = Question.new(question_params)
     if @question.save
       render json: @question
@@ -15,11 +16,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    return if authenticate!(current_user)
     @question = Question.find_by(id: params[:id])
     render json: @question
   end
 
   def update
+    return if authenticate!(current_user)
     @question = Question.find_by(id: params[:id])
     @question.update_attributes(question_params)
     if @question.save
@@ -32,6 +35,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    return if authenticate!(current_user)
     @question = Question.find_by(id: params[:id])
     @question.destroy
   end

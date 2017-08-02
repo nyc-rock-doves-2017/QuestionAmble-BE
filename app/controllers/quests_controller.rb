@@ -4,6 +4,7 @@ class QuestsController < ApplicationController
   end
 
   def create
+    return if authenticate!(current_user)
     @quest = Quest.new(quest_params)
     if @quest.save
       render json: @quest
