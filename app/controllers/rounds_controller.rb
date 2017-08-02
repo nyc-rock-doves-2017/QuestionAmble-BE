@@ -4,7 +4,7 @@ class RoundsController < ApplicationController
   end
 
   def create
-    # return if authenticate!(current_user)
+    return if authenticate!(current_user)
     @quest = Quest.find_by(key: params[:round][:game_key])
     @round = Round.new(quest: @quest, player_id: params[:round][:player_id])
 
@@ -18,7 +18,7 @@ class RoundsController < ApplicationController
   end
 
   def next_question
-    # return if authenticate!(current_user)
+    return if authenticate!(current_user)
     @round = Round.find_by(id: params[:id])
     round_questions = @round.quest.questions
 
@@ -39,7 +39,7 @@ class RoundsController < ApplicationController
   end
 
   def compare_location
-    # return if authenticate!(current_user)
+    return if authenticate!(current_user)
     latitude = params["player_lat"].to_f
     longitude = params["player_lng"].to_f
     current_question = params["cur_question_id"].to_i
@@ -55,7 +55,7 @@ class RoundsController < ApplicationController
   end
 
   def show
-    # return if authenticate!(current_user)
+    return if authenticate!(current_user)
     @round = Round.find_by(id: params[:id])
     render json: @round
   end
