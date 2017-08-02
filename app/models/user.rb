@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  before_save :downcase_email
+  before_save :downcase_email, :downcase_username
 
   validates :username, :email, :password_digest, presence: true
   validates :username, :email, uniqueness: true
@@ -52,6 +52,10 @@ class User < ApplicationRecord
 
   def downcase_email
     self.email = self.email.delete(' ').downcase
+  end
+
+  def downcase_username
+    self.username = self.username.delete(' ').downcase
   end
 
 end
