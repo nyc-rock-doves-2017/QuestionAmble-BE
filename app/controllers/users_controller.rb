@@ -31,20 +31,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    return if authenticate!(current_user)
+    # return if authenticate!(current_user)
     @user = User.find_by(id: params[:id])
     render json: @user
   end
 
   def my_quests
-    return if authenticate!(current_user)
+    # return if authenticate!(current_user)
     @user = User.find_by(id: params[:id].to_i)
     @user_quests = @user.quests_created
     render json: @user_quests
   end
 
   def my_stats
-    return if authenticate!(current_user)
+    # return if authenticate!(current_user)
     @user = User.find_by(id: params[:id])
     render json: @user
   end

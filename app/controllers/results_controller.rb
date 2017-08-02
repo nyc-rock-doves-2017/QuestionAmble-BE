@@ -1,7 +1,7 @@
 class ResultsController < ApplicationController
 
   def create
-    return if authenticate!(current_user)
+    # return if authenticate!(current_user)
     user_guess = (params[:user_guess]).gsub(/[^0-9a-z]/i, '').downcase
     round_id = (params[:round_id]).to_i
     question_id = (params[:question_id]).to_i
