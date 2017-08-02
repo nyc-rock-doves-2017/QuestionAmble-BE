@@ -11,8 +11,12 @@ class Round < ApplicationRecord
 
   def completion_score_raw
     denominator = (self.quest.questions.length).to_f
-    numerator = ((self.guesses.select {|g| g.win == true}).length).to_f
-    score = ((numerator / denominator) * 100).floor
+    if self.guesses.length > 0
+      numerator = ((self.guesses.select {|g| g.win == true}).length).to_f
+      score = ((numerator / denominator) * 100).floor
+    else
+      "---"
+    end
   end
 
   def completion_score
@@ -20,9 +24,13 @@ class Round < ApplicationRecord
   end
 
   def accuracy_score_raw
-    question_count_pairs = self.guesses.group(:question_id).count
-    answered_right_first = question_count_pairs.select { |id, count| count == 1 }
-    score = (((answered_right_first.length).to_f)/((self.quest.questions.length).to_f)*100).floor
+    if self.guesses.length > 0
+      question_count_pairs = self.guesses.group(:question_id).count
+      answered_right_first = question_count_pairs.select { |id, count| count == 1 }
+      score = (((answered_right_first.length).to_f)/((self.quest.questions.length).to_f)*100).floor
+    else
+      "---"
+    end
   end
 
   def accuracy_score
