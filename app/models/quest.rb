@@ -52,7 +52,7 @@ class Quest < ApplicationRecord
 
   def played_by
     if self.played_quests.length == 0
-      result = "No one has played this quest yet"
+      result = ["No one has played this quest yet"]
     else
       all_attempts = self.played_quests.map do |quest|
         quest.played_by
