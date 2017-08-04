@@ -44,7 +44,8 @@ class RoundsController < ApplicationController
     longitude = params["player_lng"].to_f
     current_question = params["cur_question_id"].to_i
 
-    questions_match = Question.within(0.25, :origin => [latitude, longitude])
+    questions_match = Question.within(10, :origin => [latitude, longitude])
+
     target = questions_match.select { |q| q.id == current_question }
 
     if target.length == 0
