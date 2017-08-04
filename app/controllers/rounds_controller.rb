@@ -45,6 +45,7 @@ class RoundsController < ApplicationController
     current_question = params["cur_question_id"].to_i
 
     questions_match = Question.within(10, :origin => [latitude, longitude])
+
     target = questions_match.select { |q| q.id == current_question }
 
     if target.length == 0
