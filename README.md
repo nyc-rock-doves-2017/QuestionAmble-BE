@@ -1,24 +1,25 @@
-# README
+# QuestionAmble
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Get description from Wan
 
-Things you may want to cover:
+### Table of Contents
+* [Team Members](###team-members)
+* [Structure](###structure)
+* [Resources](###resources)
+* [Additional Information](###additional-information)
 
-* Ruby version
+### Team Members
+* [Wan Tsui](https://github.com/wantsui)
+* [Kelsey Malone](https://github.com/kqm001)
+* [Kevin Cross](https://github.com/Kevinhcross96)
+* [Rahat Alam](https://github.com/rahat64)
 
-* System dependencies
+### Structure
+The backend of QuestionAmble is built as an Ruby on Rails API calling on data stored in a PostgreSQL database hosted on Heroku.  Our API returns data in JSON format.
 
-* Configuration
+#### Database
+![QuestionAmble Schema Design](readme-assets/questionamble_schema.png)
 
-* Database creation
+*Figure 1*.  Simplified schema design for QuestionAmble database.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### API Endpoint Reference
